@@ -105,12 +105,12 @@ public class ConfiguracionActivity extends AppCompatActivity {
     public void validacionRadios(View view) {
         switch (view.getId()){
             case R.id.radioButton_tiempo:
-                intentos.setVisibility(View.GONE);
-                tiempo.setVisibility(View.VISIBLE);
+                intentosInput.setVisibility(View.GONE);
+                tiempoInput.setVisibility(View.VISIBLE);
                 break;
             case R.id.radioButton_intentos:
-                intentos.setVisibility(View.VISIBLE);
-                tiempo.setVisibility(View.GONE);
+                intentosInput.setVisibility(View.VISIBLE);
+                tiempoInput.setVisibility(View.GONE);
                 break;
         }
     }
