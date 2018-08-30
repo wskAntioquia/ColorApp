@@ -120,14 +120,18 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                if (!tiempo.getText().toString().equalsIgnoreCase("0")){
-                    if (seleccio==false){
-                        incorrecta++;
-                    }
-                    cambiarPalabra();
-                    cambiarColorBotones();
-                    cambiarColorPalabra();
+                try {
+                    if (!tiempo.getText().toString().equalsIgnoreCase("0''")){
+                        if (seleccio==false){
+                            incorrecta++;
+                        }
 
+                        cambiarColorBotones();
+                        cambiarColorPalabra();
+                        cambiarPalabra();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(JuegoConfiguracionActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -139,8 +143,7 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         seleccio=false;
         boolean btn1=false,btn2=false,btn3=false,btn4=false;
         int color1=0,color2=0,color3=0,color4=0;
-
-        while (btn1==false || btn2==false || btn3==false ||btn4==false){
+        while (btn1==false || btn2==false || btn3==false || btn4==false){
             int azar=random.nextInt(4);
             switch (azar){
                 case 0:
@@ -353,7 +356,6 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         if (view.getId()==f1.getId()){
             if (color==bcolor1){
                 correcta++;
-                correctas.setText(correcta+"");
             }else {
                 incorrecta++;
             }
@@ -362,7 +364,6 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         if (view.getId()==f2.getId()){
             if (color==bcolor2){
                 correcta++;
-                correctas.setText(correcta+"");
             }else {
                 incorrecta++;
             }
@@ -371,7 +372,6 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         if (view.getId()==f3.getId()){
             if (color==bcolor3){
                 correcta++;
-                correctas.setText(correcta+"");
             }else {
                 incorrecta++;
             }
@@ -380,11 +380,13 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         if (view.getId()==f4.getId()){
             if (color==bcolor4){
                 correcta++;
-                correctas.setText(correcta+"");
+
             }else {
                 incorrecta++;
             }
         }
+
+        correctas.setText(correcta+"");
         habilitarBotones();
 
     }
