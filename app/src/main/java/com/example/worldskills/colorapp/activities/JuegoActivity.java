@@ -40,15 +40,13 @@ public class JuegoActivity extends AppCompatActivity {
     //cuando la el juego se esta ejecutando y el boton esta en estado de play
     private void play() {
         iniciarJuego();
-        cambiarPalabra();
-        cambiarColorPalabra();
-        cambiarColorBotones();
         estado=false;
         pause.setText("PAUSE");
     }
 
     //cambiar el color de los botones
     private void cambiarColorBotones() {
+        seleccio=false;
         boolean btn1=false,btn2=false,btn3=false,btn4=false;
         int color1=0,color2=0,color3=0,color4=0;
         while (btn1==false || btn2==false || btn3==false ||btn4==false){
@@ -235,9 +233,8 @@ public class JuegoActivity extends AppCompatActivity {
                         intentos.setText(intento+"");
                         incorrecta++;
                     }
-                    cambiarPalabra();
-                    cambiarColorBotones();
-                    cambiarColorPalabra();
+                    iniciarJuego();
+
                 }
 
             }
@@ -245,12 +242,15 @@ public class JuegoActivity extends AppCompatActivity {
         
     }
 
+    //habilitar que los botones tengan funcionalidad
     private void habilitarBotones() {
         f1.setEnabled(true);
         f2.setEnabled(true);
         f3.setEnabled(true);
         f4.setEnabled(true);
     }
+
+    //desabilitar la funcionalidad de los botones
     private void desabiliotarBotones() {
         f1.setEnabled(false);
         f2.setEnabled(false);
@@ -258,8 +258,9 @@ public class JuegoActivity extends AppCompatActivity {
         f4.setEnabled(false);
     }
 
+    //
     private void iniciarJuego() {
-        if (incorrecta==5){
+        if (incorrecta==4){
             contador_palabra.cancel();
         }
         if (count==4){
@@ -268,12 +269,17 @@ public class JuegoActivity extends AppCompatActivity {
         if (intento==0){
             contador_palabra.cancel();
         }
+        cambiarPalabra();
+        cambiarColorBotones();
+        cambiarColorPalabra();
+
     }
 
     //inicializar los elementos de la interfaz grafica
     private void inicializar() {
         palabras= findViewById(R.id.textView_palabra);
         correctas= findViewById(R.id.textView_correctas);
+        correctas.setText(correcta+"");
         intentos= findViewById(R.id.textView_intentos);
         intentos.setText("3");
         total_p= findViewById(R.id.textView_totalp);
@@ -288,6 +294,7 @@ public class JuegoActivity extends AppCompatActivity {
         
     }
 
+    //depenciendo del click
     public void pausarJuego(View view) {
         count++;
         if (estado){
@@ -295,10 +302,10 @@ public class JuegoActivity extends AppCompatActivity {
             play();
         }else {
             pause();
-
         }
     }
 
+    //pausar el juego
     private void pause() {
         estado=true;
         pause.setText("PLAY");
@@ -306,12 +313,16 @@ public class JuegoActivity extends AppCompatActivity {
         desabiliotarBotones();
     }
 
+    //verificar que las resouestas sean correctas
     public void verificarResouesta(View view) {
         desabiliotarBotones();
+        seleccio=true;
         if (f1.getId()==view.getId()){
             if (color==bcolor1){
                 correcta++;
                 correctas.setText(correcta+"");
+            }else {
+                incorrecta++;
             }
         }
 
@@ -319,6 +330,8 @@ public class JuegoActivity extends AppCompatActivity {
             if (color==bcolor2){
                 correcta++;
                 correctas.setText(correcta+"");
+            }else {
+                incorrecta++;
             }
         }
 
@@ -326,6 +339,8 @@ public class JuegoActivity extends AppCompatActivity {
             if (color==bcolor3){
                 correcta++;
                 correctas.setText(correcta+"");
+            }else {
+                incorrecta++;
             }
         }
 
@@ -333,6 +348,8 @@ public class JuegoActivity extends AppCompatActivity {
             if (color==bcolor4){
                 correcta++;
                 correctas.setText(correcta+"");
+            }else {
+                incorrecta++;
             }
         }
 

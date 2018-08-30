@@ -88,6 +88,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:clickable="true"
+        android:onClick="verificarResouesta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton3"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton" />
@@ -102,6 +103,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:clickable="true"
+        android:onClick="verificarResouesta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton4"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton2" />
@@ -116,6 +118,7 @@
         android:layout_marginRight="21dp"
         android:layout_marginStart="8dp"
         android:clickable="true"
+        android:onClick="verificarResouesta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton3" />
