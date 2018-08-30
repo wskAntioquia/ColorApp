@@ -41,7 +41,7 @@ public class JuegoActivity extends AppCompatActivity {
     private void play() {
         iniciarJuego();
         estado=false;
-        pause.setText("PAUSE");
+        pause.setBackgroundResource(R.drawable.btn_pause);
     }
 
     //cambiar el color de los botones
@@ -308,7 +308,7 @@ public class JuegoActivity extends AppCompatActivity {
     //pausar el juego
     private void pause() {
         estado=true;
-        pause.setText("PLAY");
+        pause.setBackgroundResource(R.drawable.btn_play);
         contador_palabra.cancel();
         desabiliotarBotones();
     }
