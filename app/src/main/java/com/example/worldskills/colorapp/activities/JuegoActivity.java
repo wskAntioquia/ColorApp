@@ -23,7 +23,7 @@ public class JuegoActivity extends AppCompatActivity {
     long tiempo_palabra=3000;
     int correcta=0, incorrecta=0, total_palabras=0, posicion_palabra, mil=1000,  intento=3, count=0;
     boolean seleccio=false, estado=true;
-    int bcolor1=0,bcolor2=0,bcolor3=0,bcolor4=0;
+    int bcolor1=0,bcolor2=0,bcolor3=0,bcolor4=0, color;
     Random random= new Random();
     CountDownTimer contador_palabra;
 
@@ -51,7 +51,7 @@ public class JuegoActivity extends AppCompatActivity {
     private void cambiarColorBotones() {
         boolean btn1=false,btn2=false,btn3=false,btn4=false;
         int color1=0,color2=0,color3=0,color4=0;
-        if (btn1==false || btn2==false || btn3==false ||btn4==false){
+        while (btn1==false || btn2==false || btn3==false ||btn4==false){
             int azar=random.nextInt(4);
             switch (azar){
                 case 0:
@@ -67,21 +67,21 @@ public class JuegoActivity extends AppCompatActivity {
                             f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
                             color2=1;
                             btn1=true;
-                            bcolor1=2;
+                            bcolor1=1;
                             break;
                         }
                         if (color3==0){
                             f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#891210")));
-                            color1=1;
+                            color3=1;
                             btn1=true;
-                            bcolor1=3;
+                            bcolor1=2;
                             break;
                         }
                         if (color4==0){
                             f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DBDB1A")));
-                            color1=1;
+                            color4=1;
                             btn1=true;
-                            bcolor1=4;
+                            bcolor1=3;
                             break;
                         }
 
@@ -92,95 +92,95 @@ public class JuegoActivity extends AppCompatActivity {
                         if (color1==0){
                             f2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#1EA1BE")));
                             color1=1;
-                            btn1=true;
-                            bcolor1=0;
+                            btn2=true;
+                            bcolor2=0;
                             break;
                         }
                         if (color2==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
+                            f2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
                             color2=1;
-                            btn1=true;
-                            bcolor1=2;
+                            btn2=true;
+                            bcolor2=1;
                             break;
                         }
                         if (color3==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#891210")));
-                            color1=1;
-                            btn1=true;
-                            bcolor1=3;
+                            f2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#891210")));
+                            color3=1;
+                            btn2=true;
+                            bcolor2=2;
                             break;
                         }
                         if (color4==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DBDB1A")));
-                            color1=1;
-                            btn1=true;
-                            bcolor1=4;
+                            f2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DBDB1A")));
+                            color4=1;
+                            btn2=true;
+                            bcolor2=3;
                             break;
                         }
 
                     }
 
                 case 2:
-                    if (btn1==false){
+                    if (btn3==false){
                         if (color1==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#1EA1BE")));
+                            f3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#1EA1BE")));
                             color1=1;
-                            btn1=true;
-                            bcolor1=0;
+                            btn3=true;
+                            bcolor3=0;
                             break;
                         }
                         if (color2==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
+                            f3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
                             color2=1;
-                            btn1=true;
-                            bcolor1=2;
+                            btn3=true;
+                            bcolor3=1;
                             break;
                         }
                         if (color3==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#891210")));
-                            color1=1;
-                            btn1=true;
-                            bcolor1=3;
+                            f3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#891210")));
+                            color3=1;
+                            btn3=true;
+                            bcolor3=2;
                             break;
                         }
                         if (color4==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DBDB1A")));
-                            color1=1;
+                            f3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DBDB1A")));
+                            color4=1;
                             btn1=true;
-                            bcolor1=4;
+                            bcolor3=3;
                             break;
                         }
 
                     }
 
                 case 3:
-                    if (btn1==false){
+                    if (btn4==false){
                         if (color1==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#1EA1BE")));
+                            f4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#1EA1BE")));
                             color1=1;
-                            btn1=true;
-                            bcolor1=0;
+                            btn4=true;
+                            bcolor4=0;
                             break;
                         }
                         if (color2==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
+                            f4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
                             color2=1;
-                            btn1=true;
-                            bcolor1=2;
+                            btn4=true;
+                            bcolor4=1;
                             break;
                         }
                         if (color3==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#891210")));
-                            color1=1;
-                            btn1=true;
-                            bcolor1=3;
+                            f4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#891210")));
+                            color3=1;
+                            btn4=true;
+                            bcolor4=2;
                             break;
                         }
                         if (color4==0){
-                            f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DBDB1A")));
-                            color1=1;
-                            btn1=true;
-                            bcolor1=4;
+                            f4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DBDB1A")));
+                            color4=1;
+                            btn4=true;
+                            bcolor4=3;
                             break;
                         }
 
@@ -195,7 +195,7 @@ public class JuegoActivity extends AppCompatActivity {
 
     //cambiar el color de la tinta de los botones
     private void cambiarColorPalabra() {
-        int color=random.nextInt(4);
+         color=random.nextInt(4);
         switch (color){
             case 0:
                 palabras.setTextColor(Color.parseColor("#1EA1BE"));
@@ -259,7 +259,7 @@ public class JuegoActivity extends AppCompatActivity {
     }
 
     private void iniciarJuego() {
-        if (incorrecta==3){
+        if (incorrecta==5){
             contador_palabra.cancel();
         }
         if (count==4){
@@ -275,6 +275,7 @@ public class JuegoActivity extends AppCompatActivity {
         palabras= findViewById(R.id.textView_palabra);
         correctas= findViewById(R.id.textView_correctas);
         intentos= findViewById(R.id.textView_intentos);
+        intentos.setText("3");
         total_p= findViewById(R.id.textView_totalp);
 
         f1= findViewById(R.id.floatingActionButton);
@@ -303,5 +304,37 @@ public class JuegoActivity extends AppCompatActivity {
         pause.setText("PLAY");
         contador_palabra.cancel();
         desabiliotarBotones();
+    }
+
+    public void verificarResouesta(View view) {
+        desabiliotarBotones();
+        if (f1.getId()==view.getId()){
+            if (color==bcolor1){
+                correcta++;
+                correctas.setText(correcta+"");
+            }
+        }
+
+        if (f2.getId()==view.getId()){
+            if (color==bcolor2){
+                correcta++;
+                correctas.setText(correcta+"");
+            }
+        }
+
+        if (f3.getId()==view.getId()){
+            if (color==bcolor3){
+                correcta++;
+                correctas.setText(correcta+"");
+            }
+        }
+
+        if (f4.getId()==view.getId()){
+            if (color==bcolor4){
+                correcta++;
+                correctas.setText(correcta+"");
+            }
+        }
+
     }
 }
