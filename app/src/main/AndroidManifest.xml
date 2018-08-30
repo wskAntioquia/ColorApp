@@ -20,6 +20,10 @@
         <activity android:name=".activities.PuntajesActivity" />
         <activity android:name=".activities.ConfiguracionActivity" />
         <activity android:name=".activities.JuegoConfiguracionActivity"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
