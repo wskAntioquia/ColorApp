@@ -65,7 +65,7 @@ public class JuegoActivity extends AppCompatActivity {
                         }
                         if (color2==0){
                             f1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
-                            color2=1;
+                            color2=2;
                             btn1=true;
                             bcolor1=1;
                             break;
@@ -187,10 +187,7 @@ public class JuegoActivity extends AppCompatActivity {
                     }
 
                 }
-        }
-
-
-
+            }
     }
 
     //cambiar el color de la tinta de los botones
@@ -236,7 +233,9 @@ public class JuegoActivity extends AppCompatActivity {
                         intentos.setText(intento+"");
                         incorrecta++;
                     }
-                    iniciarJuego();
+                    cambiarPalabra();
+                    cambiarColorBotones();
+                    cambiarColorPalabra();
 
                 }
 
@@ -263,7 +262,7 @@ public class JuegoActivity extends AppCompatActivity {
 
     //
     private void iniciarJuego() {
-        if (incorrecta==4){
+        if (incorrecta==3){
             contador_palabra.cancel();
             dialogo();
         }
