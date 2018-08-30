@@ -76,6 +76,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
         SharedPreferences.Editor editor=preferences.edit();
         editor.putInt("tipoJuego",tipoJuego);
         editor.putString("tiempo",tiempo.getText().toString());
+
         editor.putString("tiempoPalabra",tiempoPalabra.getText().toString());
         editor.apply();
     }
