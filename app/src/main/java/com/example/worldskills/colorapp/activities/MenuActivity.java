@@ -22,7 +22,7 @@ public class MenuActivity extends AppCompatActivity {
 
     //para ir y ver los 4 puntajes mas altos de los juego por defecto
     public void irAPuntajes(View view) {
-        startActivity(new Intent(MenuActivity.this,PuntajesActivity.class));
+        startActivity(new Intent(MenuActivity.this,JuegoActivity.class));
     }
 
     //para ir a la pantalla de configuracion del juego

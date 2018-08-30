@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.worldskills.colorapp.R;
 
@@ -23,7 +24,7 @@ public class JuegoActivity extends AppCompatActivity {
     
     String colores[]={"AMARILLO","AZUL","ROJO","VERDE"};
     long tiempo_palabra=3000;
-    int correcta=0, incorrecta=0, total_palabras=0, posicion_palabra, mil=1000,  intento=3, count=0;
+    int correcta=0, incorrecta=0, total_palabras=0, posicion_palabra, mil=1000,  intento=3, count;
     boolean seleccio=false, estado=true;
     int bcolor1=0,bcolor2=0,bcolor3=0,bcolor4=0, color;
     Random random= new Random();
@@ -34,16 +35,70 @@ public class JuegoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
         inicializar();
-        play();
+        iniciarJuego();
+        cambiarPalabra();
+        cambiarColorPalabra();
+        cambiarColorBotones();
 
         
     }
 
-    //cuando la el juego se esta ejecutando y el boton esta en estado de play
-    private void play() {
-        iniciarJuego();
-        estado=false;
-        pause.setBackgroundResource(R.drawable.btn_pause);
+
+
+    private void iniciarJuego() {
+        if (incorrecta==3){
+            contador_palabra.cancel();
+            dialogo();
+        }
+        if (count==4){
+            pause.setEnabled(false);
+            pause.setVisibility(View.GONE);
+        }
+        if (intento==0){
+            contador_palabra.cancel();
+             dialogo();
+        }
+        cambiarPalabra();
+        cambiarColorBotones();
+        cambiarColorPalabra();
+
+    }
+    //cambiar la palabra presentada
+    private void cambiarPalabra() {
+        habilitarBotones();
+        total_palabras++;
+        total_p.setText(total_palabras+"");
+
+        posicion_palabra=random.nextInt(4);
+        palabras.setText(colores[posicion_palabra]);
+
+        contador_palabra= new CountDownTimer(tiempo_palabra,mil) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                try {
+                    if (!intentos.getText().toString().equalsIgnoreCase("0''")){
+                        if (seleccio==false){
+                            incorrecta++;
+                            intento--;
+                            intentos.setText(intento+"");
+                        }
+
+                        cambiarColorBotones();
+                        cambiarColorPalabra();
+                        cambiarPalabra();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(JuegoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }.start();
+
     }
 
     //cambiar el color de los botones
@@ -210,39 +265,30 @@ public class JuegoActivity extends AppCompatActivity {
         }
     }
 
-    //cambiar la palabra presentada
-    private void cambiarPalabra() {
-        habilitarBotones();
-        total_palabras++;
-        total_p.setText(total_palabras+"");
-        
-        posicion_palabra=random.nextInt(4);
-        palabras.setText(colores[posicion_palabra]);
-        
-        contador_palabra= new CountDownTimer(tiempo_palabra,mil) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                
-            }
+    //diaogo que muestra los resultados del juego
+    private void dialogo() {
 
-            @Override
-            public void onFinish() {
-                if (!intentos.getText().toString().equalsIgnoreCase("0")){
-                    if (seleccio==false){
-                        intento--;
-                        intentos.setText(intento+"");
-                        incorrecta++;
+        AlertDialog.Builder builder= new AlertDialog.Builder(JuegoActivity.this);
+        builder.setMessage(
+                "correctas: " + correcta + " \n"
+                        + " incorrectas: " + incorrecta
+        )
+                .setNegativeButton("TERMINAR", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onBackPressed();
                     }
-                    cambiarPalabra();
-                    cambiarColorBotones();
-                    cambiarColorPalabra();
+                })
+                .setCancelable(false)
+                .setTitle("Resultados");
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
-                }
-
-            }
-        }.start();
-        
     }
+
+
+
+
 
     //habilitar que los botones tengan funcionalidad
     private void habilitarBotones() {
@@ -260,42 +306,44 @@ public class JuegoActivity extends AppCompatActivity {
         f4.setEnabled(false);
     }
 
-    //
-    private void iniciarJuego() {
-        if (incorrecta==3){
-            contador_palabra.cancel();
-            dialogo();
+    //verificar que las resouestas sean correctas
+    public void verificarRespuesta(View view) {
+        desabiliotarBotones();
+        seleccio=true;
+        if (f1.getId()==view.getId()){
+            if (color==bcolor1){
+                correcta++;
+            }else {
+                incorrecta++;
+            }
         }
-        if (count==4){
-            pause.setEnabled(false);
+
+        if (f2.getId()==view.getId()){
+            if (color==bcolor2){
+                correcta++;
+            }else {
+                incorrecta++;
+            }
         }
-        if (intento==0){
-            contador_palabra.cancel();
-            dialogo();
+
+        if (f3.getId()==view.getId()){
+            if (color==bcolor3){
+                correcta++;
+            }else {
+                incorrecta++;
+            }
         }
-        cambiarPalabra();
-        cambiarColorBotones();
-        cambiarColorPalabra();
 
-    }
+        if (f4.getId()==view.getId()){
+            if (color==bcolor4){
+                correcta++;
+            }else {
+                incorrecta++;
+            }
+        }
 
-    private void dialogo() {
-
-        AlertDialog.Builder builder= new AlertDialog.Builder(getApplicationContext());
-        builder.setMessage(
-         "correctas: " + correcta + " \n"
-                + " incorrectas: " + incorrecta
-        )
-                .setNegativeButton("TERMINAR", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        onBackPressed();
-                    }
-                })
-                .setCancelable(false)
-                .setTitle("Resultados");
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        correctas.setText(correcta+"");
+        habilitarBotones();
 
     }
 
@@ -314,74 +362,43 @@ public class JuegoActivity extends AppCompatActivity {
         f4= findViewById(R.id.floatingActionButton4);
 
         pause= findViewById(R.id.button_pause);
-        
-        
-    }
 
-    //depenciendo del click
-    public void pausarJuego(View view) {
-        count++;
-        if (estado){
-            total_palabras--;
-            play();
-        }else {
-            pause();
-        }
-    }
-
-    //pausar el juego
-    private void pause() {
-        estado=true;
-        pause.setBackgroundResource(R.drawable.btn_play);
-        contador_palabra.cancel();
-        desabiliotarBotones();
-    }
-
-    //verificar que las resouestas sean correctas
-    public void verificarResouesta(View view) {
-        desabiliotarBotones();
-        seleccio=true;
-        if (f1.getId()==view.getId()){
-            if (color==bcolor1){
-                correcta++;
-                correctas.setText(correcta+"");
-            }else {
-                incorrecta++;
-            }
-        }
-
-        if (f2.getId()==view.getId()){
-            if (color==bcolor2){
-                correcta++;
-                correctas.setText(correcta+"");
-            }else {
-                incorrecta++;
-            }
-        }
-
-        if (f3.getId()==view.getId()){
-            if (color==bcolor3){
-                correcta++;
-                correctas.setText(correcta+"");
-            }else {
-                incorrecta++;
-            }
-        }
-
-        if (f4.getId()==view.getId()){
-            if (color==bcolor4){
-                correcta++;
-                correctas.setText(correcta+"");
-            }else {
-                incorrecta++;
-            }
-        }
 
     }
+
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
     }
+
+    //cuando la el juego se esta ejecutando y el boton esta en estado de play
+//    private void play() {
+//        iniciarJuego();
+//        cambiarColorBotones();
+//        cambiarColorPalabra();
+//        cambiarPalabra();
+//        estado=false;
+//        pause.setBackgroundResource(R.drawable.btn_pause);
+//    }
+//
+//    //pausar el juego
+//    private void pause() {
+//        estado=true;
+//        pause.setBackgroundResource(R.drawable.btn_play);
+//        contador_palabra.cancel();
+//        desabiliotarBotones();
+//    }
+//
+//    //depenciendo del click
+//    public void pausarJuego(View view) {
+//        count++;
+//        if (estado){
+//            total_palabras--;
+//            play();
+//        }else {
+//            pause();
+//        }
+//    }
 }
