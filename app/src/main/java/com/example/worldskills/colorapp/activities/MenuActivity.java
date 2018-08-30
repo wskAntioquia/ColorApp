@@ -17,7 +17,7 @@ public class MenuActivity extends AppCompatActivity {
 
     //para ir a al juego por defecto
     public void irAJuego(View view) {
-        startActivity(new Intent(MenuActivity.this,JuegoActivity.class));
+        startActivity(new Intent(MenuActivity.this,JuegoConfiguracionActivity.class));
     }
 
     //para ir y ver los 4 puntajes mas altos de los juego por defecto

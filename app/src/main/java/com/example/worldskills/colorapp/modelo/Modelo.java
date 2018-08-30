@@ -1,17 +1,17 @@
 package com.example.worldskills.colorapp.modelo;
 
 public class Modelo {
-    public String Correctas;
+    public int Correctas;
 
 
     public Modelo() {
     }
 
-    public String getCorrectas() {
+    public int getCorrectas() {
         return Correctas;
     }
 
-    public void setCorrectas(String correctas) {
+    public void setCorrectas(int correctas) {
         Correctas = correctas;
     }
 }
