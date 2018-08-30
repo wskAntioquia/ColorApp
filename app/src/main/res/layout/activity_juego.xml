@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_intentos" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+            android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="62dp"
@@ -73,7 +73,6 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:clickable="true"
-        android:src="?attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton2"
         app:layout_constraintStart_toStartOf="parent" />
@@ -88,7 +87,6 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:clickable="true"
-        android:src="?attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton3"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton" />
@@ -103,7 +101,6 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:clickable="true"
-        android:src="?attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton4"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton2" />
@@ -118,7 +115,6 @@
         android:layout_marginRight="21dp"
         android:layout_marginStart="8dp"
         android:clickable="true"
-        android:src="?attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/floatingActionButton3" />
@@ -132,6 +128,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginStart="280dp"
         android:layout_marginTop="35dp"
+        android:onClick="pausarJuego"
         android:text="pause"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
