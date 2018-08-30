@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".activities.JuegoActivity" />
         <activity android:name=".activities.PuntajesActivity" />
-        <activity android:name=".activities.ConfiguracionActivity"></activity>
+        <activity android:name=".activities.ConfiguracionActivity" />
+        <activity android:name=".activities.JuegoConfiguracionActivity"></activity>
     </application>
 
 </manifest>

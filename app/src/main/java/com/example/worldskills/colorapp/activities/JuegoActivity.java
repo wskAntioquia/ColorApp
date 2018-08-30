@@ -1,9 +1,11 @@
 package com.example.worldskills.colorapp.activities;
 
+import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -89,28 +91,28 @@ public class JuegoActivity extends AppCompatActivity {
                     if (btn2==false){
                         if (color1==0){
                             f2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#1EA1BE")));
-                            color1=1;
+                            color1=2;
                             btn2=true;
                             bcolor2=0;
                             break;
                         }
                         if (color2==0){
                             f2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
-                            color2=1;
+                            color2=2;
                             btn2=true;
                             bcolor2=1;
                             break;
                         }
                         if (color3==0){
                             f2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#891210")));
-                            color3=1;
+                            color3=2;
                             btn2=true;
                             bcolor2=2;
                             break;
                         }
                         if (color4==0){
                             f2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DBDB1A")));
-                            color4=1;
+                            color4=2;
                             btn2=true;
                             bcolor2=3;
                             break;
@@ -122,28 +124,28 @@ public class JuegoActivity extends AppCompatActivity {
                     if (btn3==false){
                         if (color1==0){
                             f3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#1EA1BE")));
-                            color1=1;
+                            color1=3;
                             btn3=true;
                             bcolor3=0;
                             break;
                         }
                         if (color2==0){
                             f3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
-                            color2=1;
+                            color2=3;
                             btn3=true;
                             bcolor3=1;
                             break;
                         }
                         if (color3==0){
                             f3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#891210")));
-                            color3=1;
+                            color3=3;
                             btn3=true;
                             bcolor3=2;
                             break;
                         }
                         if (color4==0){
                             f3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DBDB1A")));
-                            color4=1;
+                            color4=3;
                             btn1=true;
                             bcolor3=3;
                             break;
@@ -155,28 +157,28 @@ public class JuegoActivity extends AppCompatActivity {
                     if (btn4==false){
                         if (color1==0){
                             f4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#1EA1BE")));
-                            color1=1;
+                            color1=4;
                             btn4=true;
                             bcolor4=0;
                             break;
                         }
                         if (color2==0){
                             f4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#169133")));
-                            color2=1;
+                            color2=4;
                             btn4=true;
                             bcolor4=1;
                             break;
                         }
                         if (color3==0){
                             f4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#891210")));
-                            color3=1;
+                            color3=4;
                             btn4=true;
                             bcolor4=2;
                             break;
                         }
                         if (color4==0){
                             f4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DBDB1A")));
-                            color4=1;
+                            color4=4;
                             btn4=true;
                             bcolor4=3;
                             break;
@@ -193,6 +195,7 @@ public class JuegoActivity extends AppCompatActivity {
 
     //cambiar el color de la tinta de los botones
     private void cambiarColorPalabra() {
+
          color=random.nextInt(4);
         switch (color){
             case 0:
@@ -262,16 +265,38 @@ public class JuegoActivity extends AppCompatActivity {
     private void iniciarJuego() {
         if (incorrecta==4){
             contador_palabra.cancel();
+            dialogo();
         }
         if (count==4){
             pause.setEnabled(false);
         }
         if (intento==0){
             contador_palabra.cancel();
+            dialogo();
         }
         cambiarPalabra();
         cambiarColorBotones();
         cambiarColorPalabra();
+
+    }
+
+    private void dialogo() {
+
+        AlertDialog.Builder builder= new AlertDialog.Builder(getApplicationContext());
+        builder.setMessage(
+         "correctas: " + correcta + " \n"
+                + " incorrectas: " + incorrecta
+        )
+                .setNegativeButton("TERMINAR", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onBackPressed();
+                    }
+                })
+                .setCancelable(false)
+                .setTitle("Resultados");
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
     }
 
@@ -353,5 +378,11 @@ public class JuegoActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
