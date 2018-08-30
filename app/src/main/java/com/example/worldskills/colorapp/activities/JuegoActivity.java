@@ -33,7 +33,7 @@ public class JuegoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_juego);
         inicializar();
         play();
-        
+
         
     }
 
