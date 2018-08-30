@@ -3,36 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/fondo"
     android:layout_height="match_parent"
     tools:context=".activities.ConfiguracionActivity">
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_marginEnd="137dp"
         android:layout_marginLeft="138dp"
         android:layout_marginRight="137dp"
         android:layout_marginStart="138dp"
         android:layout_marginTop="84dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/radioButton_tiempo"
-            android:onClick="validacionRadios"
             android:layout_width="wrap_content"
+            android:layout_marginRight="60dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/radios"
             android:layout_weight="1"
+            android:onClick="validacionRadios"
             android:text="Con tiempo" />
 
         <RadioButton
             android:id="@+id/radioButton_intentos"
-            android:onClick="validacionRadios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/radios"
+            android:onClick="validacionRadios"
             android:text="sin tiempo" />
     </RadioGroup>
 
@@ -50,40 +55,48 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/tiempoInput"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/input"
+            android:visibility="gone">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/txt_tiempo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
+                android:hint="Ingrese el tiempo de juego" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/intentosInput"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="10dp"
+
+            android:layout_height="match_parent"
+            android:background="@drawable/input"
+            android:visibility="gone">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/txt_intentos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
+                android:textAlignment="center"
+                android:hint="ingrese el limite de intentos" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/tiemPalabraInput"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/input">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/txt_tiempo_palabra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
+                android:textAlignment="center"
+                android:hint="ingrese el tiempo de la palabra" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
@@ -91,14 +104,13 @@
         android:id="@+id/btn_jugar_config"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginRight="148dp"
-        android:layout_marginStart="148dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="64dp"
-        android:text="Button"
+        android:background="@drawable/btn_jugar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
